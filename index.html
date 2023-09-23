@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  body{
+    background-color: rgb(74, 72, 72);
+  }
+  p{
+    /* text-align: center; */
+    
+    margin: 5px 0 0 30px;
+    outline: none;
+    padding: .8em 0;
+    /* text-shadow: 0 1px #68B25B; */
+  }
+
+  div{
+    position: absolute;
+    left: 500px;
+    top: 30px;
+    
+   
+    height: 600px;
+    width: 400px;
+    background-color: white;
+  }
+  label{
+    font-size: 1.1rem;
+  }
+  input{
+    font-size: 1.1rem;
+  }
+  #submit{
+    width: 90%;
+    height: 40px;
+    background-color: rgb(6, 6, 138);
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+  <div>
+
+<form action="#" method="post" onsubmit="return validate()">
+  <p>
+    <h1 style="font-size: 30px; text-align: center;">Wscube Tech <br> Registration Form</h1>
+  </p>
+  <p>
+    <label for="Username">Username <br> </label>
+    <input type="text" placeholder="Username" name="Username" id="Username" >
+  </p>
+  <p>
+    <label for="password">password <br></label>
+    <input type="password" id="password" name="password" autocomplete="off" onkeyup="passCheck(this.value)">
+  </p>
+  <p>
+    <label for="confirm_password">confirm password <br></label>
+    <input type="password" id="confirm_password" name="confirm_password" >
+    <!-- <error id="alert"></error> -->
+  </p>
+  <p>
+    <label class="password-check"> 8 characters </label>
+    <br>
+    <label class="password-check"> 1 lower case character </label>
+    <br>
+    <label class="password-check"> 1 upper case character </label>
+    <br>
+    <label class="password-check"> 1 numerical character </label>
+    <br>
+    <label class="password-check"> 1 special character </label>
+  </p>
+  <p>
+    <error id="alert"></error>
+    <input id="submit" type="submit" value="SUBMIT">
+   
+ </p>
+</form>
+</div>
+
+</body>
+<script>
+function passCheck(data){
+  var passClass = document.getElementsByClassName('password-check');
+  const lowercase = new RegExp('(?=.*[a-z])');
+  const uppercase = new RegExp('(?=.*[A-Z])');
+  const number = new RegExp('(?=.*[0-9])');
+  const specialChar = new RegExp('(?=.*[!@#\$%\^&\*])');
+  const eightChar = new RegExp('(?=.{8,})');
+
+  if (eightChar.test(data)){
+    passClass[0].style.color = "green";
+  }else{
+    passClass[0].style.color = "grey";
+  }
+
+  if (lowercase.test(data)){
+    passClass[1].style.color = "green";
+  }else{
+    passClass[1].style.color = "grey";
+  }
+
+  if (uppercase.test(data)){
+    passClass[2].style.color = "green";
+  }else{
+    passClass[2].style.color = "grey";
+  }
+
+  if (number.test(data)){
+    passClass[3].style.color = "green";
+  }else{
+    passClass[3].style.color = "grey";
+  }
+
+  if (specialChar.test(data)){
+    passClass[4].style.color = "green";
+  }else{
+    passClass[4].style.color = "grey";
+  }
+
+}
+</script>
+</html>
